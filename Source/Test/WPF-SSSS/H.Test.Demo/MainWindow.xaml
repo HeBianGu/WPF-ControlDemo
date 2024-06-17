@@ -4,11 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H.Test.Demo"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
         xmlns:h="https://github.com/HeBianGu"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="20"
         Title="MainWindow" Height="450" Width="800">
-    <TabControl TabStripPlacement="Left" h:Cattach.SearchDock="Bottom" Style="{DynamicResource {x:Static h:TabControlKeys.Default}}">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <TabControl TabStripPlacement="Left" Style="{DynamicResource {x:Static h:TabControlKeys.Default}}">
         <TabControl.ContentTemplate>
             <DataTemplate>
                 <GroupBox Header="输出结果" Style="{DynamicResource {x:Static h:GroupBoxKeys.Default}}">
@@ -16,8 +22,44 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+
+        <TabItem Header="DataGridAutoColumnBehavior">
+            <DataGrid ItemsSource="{h:GetStudents Count=50}">
+                <b:Interaction.Behaviors>
+                    <h:DataGridAutoColumnBehavior Type="{x:Type h:Student}"/>
+                </b:Interaction.Behaviors>
+            </DataGrid>
+        </TabItem>
+        <TabItem Header="DislayDataGrid">
+            <local:DislayDataGrid ItemsSource="{h:GetStudents Count=50}">
+
+            </local:DislayDataGrid>
+        </TabItem>
+
+        <TabItem Header="Grid - SharedSizeGroup">
+            <ItemsControl Grid.IsSharedSizeScope="True" ItemsSource="{h:GetStudents Count=5}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ShowGridLines="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="group1"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Address}" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </TabItem>
         <TabItem Header="GetAgeConverter">
             <TextBlock Text="{Binding Source={x:Static s:DateTime.MinValue},Converter={local:GetAgeConverter}}"/>
+        </TabItem>
+        <TabItem Header="ProcessCommand">
+            <Button Content="打开D盘" 
+                    Style="{DynamicResource {x:Static h:ButtonKeys.Default}}" 
+                    Command="{h:ProcessCommand}" CommandParameter="D:\"/>
         </TabItem>
     </TabControl>
 </Window>

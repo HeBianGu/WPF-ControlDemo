@@ -9,8 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HeBianGu.General.WpfControlLib" Version="5.0.0" />
-    <PackageReference Include="HeBianGu.Service.Converter" Version="5.0.0" />
+    <PackageReference Include="H.Controls.Form" Version="1.0.0" />
+    <PackageReference Include="H.Data.Test" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Attach" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Behvaiors" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Command" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Common" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Geometry" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.MarkupExtension" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.TypeConverter" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.ValueConverter" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.ViewModel" Version="1.0.0" />
+    <PackageReference Include="H.Styles.Default" Version="1.0.0" />
   </ItemGroup>
-
 </Project>

@@ -1,5 +1,6 @@
 ﻿
-using HeBianGu.Service.Converter;
+using H.Extensions.ValueConverter;
+
 namespace H.Test.Demo
 {
     public class GetAgeConverter : MarkupValueConverterBase
@@ -16,7 +17,7 @@ namespace H.Test.Demo
                 }
                 return age > 0 ? age : 0;
             }
-            return null;
+            return this.DefaultValue;
         }
     }
 }
