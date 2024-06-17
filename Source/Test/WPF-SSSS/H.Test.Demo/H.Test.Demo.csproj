@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="1.jpeg" />
+    <None Remove="2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="H.Controls.Form" Version="1.0.0" />
     <PackageReference Include="H.Data.Test" Version="1.0.0" />
     <PackageReference Include="H.Extensions.Attach" Version="1.0.0" />
@@ -21,5 +26,10 @@
     <PackageReference Include="H.Extensions.ValueConverter" Version="1.0.0" />
     <PackageReference Include="H.Extensions.ViewModel" Version="1.0.0" />
     <PackageReference Include="H.Styles.Default" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="1.jpeg" />
+    <Resource Include="2.jpg" />
   </ItemGroup>
 </Project>
