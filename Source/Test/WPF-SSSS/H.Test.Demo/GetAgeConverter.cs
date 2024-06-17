@@ -1,5 +1,5 @@
-﻿
-using H.Extensions.ValueConverter;
+﻿using H.Extensions.ValueConverter;
+using System.Windows.Media;
 
 namespace H.Test.Demo
 {

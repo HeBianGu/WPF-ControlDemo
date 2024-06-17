@@ -1,77 +1,141 @@
 ﻿<Window x:Class="H.Test.Demo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:H.Test.Demo"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:h="https://github.com/HeBianGu"
-        mc:Ignorable="d" FontSize="20"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:local="clr-namespace:H.Test.Demo"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        FontSize="20"
+        mc:Ignorable="d">
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </Window.Resources>
-    <TabControl TabStripPlacement="Left" Style="{DynamicResource {x:Static h:TabControlKeys.Default}}">
+    <TabControl Style="{DynamicResource {x:Static h:TabControlKeys.Default}}" TabStripPlacement="Left">
         <TabControl.ContentTemplate>
             <DataTemplate>
                 <GroupBox Header="输出结果" Style="{DynamicResource {x:Static h:GroupBoxKeys.Default}}">
-                    <ContentPresenter Content="{Binding }" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <ContentPresenter Content="{Binding}" />
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+        <TabItem Header="Grid监测双击">
+            <Grid Background="Transparent" MouseDown="Grid_MouseDown">
+                <TextBlock x:Name="tb_doubleclick" VerticalAlignment="Top" />
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="GetEnumSource">
+            <ComboBox VerticalAlignment="Center" ItemsSource="{h:GetEnumSource EnumType={x:Type HorizontalAlignment}}" />
+        </TabItem>
+
+        <TabItem Header="DisplayEnumConverter">
+            <ComboBox VerticalAlignment="Center" ItemsSource="{h:GetEnumSource EnumType={x:Type local:MyEnum}}" />
+        </TabItem>
+
+        <TabItem Header="TreeView - Binding">
+            <TreeView ItemsSource="{local:GetTestTreeNodes}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </TabItem>
+
+        <TabItem Header="TreeView - 级联勾选">
+            <TreeView ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                        <DockPanel>
+                            <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                            <TextBlock x:Name="a"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding Model.Name}" />
+                        </DockPanel>
+
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource {x:Static h:TreeViewItemKeys.Default}}" TargetType="TreeViewItem" />
+                </TreeView.ItemContainerStyle>
+            </TreeView>
+        </TabItem>
 
         <TabItem Header="DataGridAutoColumnBehavior">
             <UniformGrid Columns="2">
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage UriSource="2.jpg"/>
+                            <BitmapImage UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="原图" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="原图" />
                 </Grid>
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelHeight="200" UriSource="2.jpg"/>
+                            <BitmapImage DecodePixelHeight="200" UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="DecodePixelHeight200" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="DecodePixelHeight200" />
                 </Grid>
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelHeight="150" UriSource="2.jpg"/>
+                            <BitmapImage DecodePixelHeight="150" UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="DecodePixelHeight150" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="DecodePixelHeight150" />
                 </Grid>
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelHeight="100" UriSource="2.jpg"/>
+                            <BitmapImage DecodePixelHeight="100" UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="DecodePixelHeight100" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="DecodePixelHeight100" />
                 </Grid>
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelHeight="50" UriSource="2.jpg"/>
+                            <BitmapImage DecodePixelHeight="50" UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="DecodePixelHeight50" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="DecodePixelHeight50" />
                 </Grid>
                 <Grid>
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelHeight="20" UriSource="2.jpg"/>
+                            <BitmapImage DecodePixelHeight="20" UriSource="2.jpg" />
                         </Image.Source>
                     </Image>
-                    <TextBlock Text="DecodePixelHeight20" HorizontalAlignment="Center" FontSize="50" Foreground="DeepPink"/>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="50"
+                               Foreground="DeepPink"
+                               Text="DecodePixelHeight20" />
                 </Grid>
             </UniformGrid>
         </TabItem>
@@ -85,7 +149,9 @@
                     </CollectionViewSource.GroupDescriptions>
                 </CollectionViewSource>
             </TabItem.Resources>
-            <DataGrid IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource cvs}}">
+            <DataGrid AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      ItemsSource="{Binding Source={StaticResource cvs}}">
                 <DataGrid.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.ContainerStyle>
@@ -96,18 +162,18 @@
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
                                             <Expander IsExpanded="True">
                                                 <Expander.Header>
-                                                    <DockPanel Margin="0 5">
+                                                    <DockPanel Margin="0,5">
                                                         <TextBlock Width="200"
                                                                    Margin="5,0,0,0"
                                                                    FontWeight="Bold">
-                                                            <Run Text="厨师 ："/>
-                                                            <Run Text="{Binding Name,Mode=OneWay}"/>
+                                                            <Run Text="厨师 ：" />
+                                                            <Run Text="{Binding Name, Mode=OneWay}" />
                                                         </TextBlock>
 
                                                         <TextBlock FontWeight="Bold">
-                                                              <Run Text="数量 ："/>
-                                                            <Run Text="{Binding ItemCount,Mode=OneWay}"/>
-                                                                <Run Text="个"/>
+                                                            <Run Text="数量 ：" />
+                                                            <Run Text="{Binding ItemCount, Mode=OneWay}" />
+                                                            <Run Text="个" />
                                                         </TextBlock>
                                                     </DockPanel>
                                                 </Expander.Header>
@@ -129,13 +195,13 @@
                                     <TextBlock Width="200"
                                                Margin="30,6,0,6"
                                                VerticalAlignment="Center">
-                                        <Run Text="班次 ："/>
-                                        <Run Text="{Binding Name,Mode=OneWay}"/>
+                                        <Run Text="班次 ：" />
+                                        <Run Text="{Binding Name, Mode=OneWay}" />
                                     </TextBlock>
                                     <TextBlock VerticalAlignment="Center">
-                                        <Run Text="销量 ："/>
-                                        <Run Text="{Binding ItemCount,Mode=OneWay}"/>
-                                        <Run Text="单"/>
+                                        <Run Text="销量 ：" />
+                                        <Run Text="{Binding ItemCount, Mode=OneWay}" />
+                                        <Run Text="单" />
                                     </TextBlock>
                                 </DockPanel>
                             </DataTemplate>
@@ -143,17 +209,29 @@
                     </GroupStyle>
                 </DataGrid.GroupStyle>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn  Width="Auto" Header="菜品">
+                    <DataGridTemplateColumn Width="Auto" Header="菜品">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="2.jpg" Width="200" VerticalAlignment="Center" Stretch="UniformToFill" Height="100"/>
+                                <Image Width="200"
+                                       Height="100"
+                                       VerticalAlignment="Center"
+                                       Source="2.jpg"
+                                       Stretch="UniformToFill" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Width="*" Header="产地" Binding="{Binding Address}"/>
-                    <DataGridTextColumn Width="*"  Header="邮箱" Binding="{Binding Emall}"/>
-                    <DataGridTextColumn Width="100" Header="价格" Binding="{Binding Score, StringFormat={}{0:C}}"/>
-                    <DataGridTextColumn Width="*" Header="联系方式" Binding="{Binding Tel}"/>
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding Address}"
+                                        Header="产地" />
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding Emall}"
+                                        Header="邮箱" />
+                    <DataGridTextColumn Width="100"
+                                        Binding="{Binding Score, StringFormat={}{0:C}}"
+                                        Header="价格" />
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding Tel}"
+                                        Header="联系方式" />
                 </DataGrid.Columns>
             </DataGrid>
         </TabItem>
@@ -162,76 +240,102 @@
             <DataGrid AutoGenerateColumns="False" ItemsSource="{h:GetStudents Count=50}">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     </Style>
                 </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="Auto" Header="姓名" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Width="Auto"  Header="邮箱" Binding="{Binding Emall}"/>
-                    <DataGridTemplateColumn  Width="Auto" >
+                    <DataGridTextColumn Width="Auto"
+                                        Binding="{Binding Name}"
+                                        Header="姓名" />
+                    <DataGridTextColumn Width="Auto"
+                                        Binding="{Binding Emall}"
+                                        Header="邮箱" />
+                    <DataGridTemplateColumn Width="Auto">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <Grid HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
+                                        <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <Border  Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="0 0 0 1">
-                                        <TextBlock Text="基本信息" HorizontalAlignment="Center"/>
+                                    <Border Grid.ColumnSpan="2"
+                                            BorderBrush="LightGray"
+                                            BorderThickness="0,0,0,1">
+                                        <TextBlock HorizontalAlignment="Center" Text="基本信息" />
                                     </Border>
-                                    <Border  Grid.Row="1" Grid.Column="0" BorderBrush="LightGray" BorderThickness="0 0 1 0">
-                                        <TextBlock Text="班级" HorizontalAlignment="Center"/>
+                                    <Border Grid.Row="1"
+                                            Grid.Column="0"
+                                            BorderBrush="LightGray"
+                                            BorderThickness="0,0,1,0">
+                                        <TextBlock HorizontalAlignment="Center" Text="班级" />
                                     </Border>
-                                    <TextBlock Text="地址" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                                    <TextBlock Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               Text="地址" />
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <UniformGrid Rows="1">
-                                    <Border  Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0 1 0">
-                                        <TextBlock Text="{Binding Class}"/>
+                                    <Border Grid.Row="1"
+                                            Grid.Column="0"
+                                            BorderBrush="Black"
+                                            BorderThickness="0,0,1,0">
+                                        <TextBlock Text="{Binding Class}" />
                                     </Border>
-                                    <TextBlock Text="{Binding Address}"/>
+                                    <TextBlock Text="{Binding Address}" />
                                 </UniformGrid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="年龄" Binding="{Binding Age}"/>
-                    <DataGridTemplateColumn  Width="300" >
+                    <DataGridTextColumn Binding="{Binding Age}" Header="年龄" />
+                    <DataGridTemplateColumn Width="300">
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
                                 <Grid HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
+                                        <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
-                                    <Border  Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="0 0 0 1">
-                                        <TextBlock Text="调查问卷" HorizontalAlignment="Center"/>
+                                    <Border Grid.ColumnSpan="2"
+                                            BorderBrush="LightGray"
+                                            BorderThickness="0,0,0,1">
+                                        <TextBlock HorizontalAlignment="Center" Text="调查问卷" />
                                     </Border>
-                                    <Border  Grid.Row="1" Grid.Column="0" BorderBrush="LightGray" BorderThickness="0 0 1 0">
-                                        <TextBlock Text="评分" HorizontalAlignment="Center"/>
+                                    <Border Grid.Row="1"
+                                            Grid.Column="0"
+                                            BorderBrush="LightGray"
+                                            BorderThickness="0,0,1,0">
+                                        <TextBlock HorizontalAlignment="Center" Text="评分" />
                                     </Border>
-                                    <TextBlock Text="电话" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+                                    <TextBlock Grid.Row="1"
+                                               Grid.Column="1"
+                                               HorizontalAlignment="Center"
+                                               Text="电话" />
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.HeaderTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <UniformGrid Rows="1">
-                                    <Border  Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0 1 0">
-                                        <TextBlock Text="{Binding Score}"/>
+                                    <Border Grid.Row="1"
+                                            Grid.Column="0"
+                                            BorderBrush="Black"
+                                            BorderThickness="0,0,1,0">
+                                        <TextBlock Text="{Binding Score}" />
                                     </Border>
-                                    <TextBlock Text="{Binding Tel}"/>
+                                    <TextBlock Text="{Binding Tel}" />
                                 </UniformGrid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -244,14 +348,12 @@
         <TabItem Header="DataGridAutoColumnBehavior">
             <DataGrid ItemsSource="{h:GetStudents Count=50}">
                 <b:Interaction.Behaviors>
-                    <h:DataGridAutoColumnBehavior Type="{x:Type h:Student}"/>
+                    <h:DataGridAutoColumnBehavior Type="{x:Type h:Student}" />
                 </b:Interaction.Behaviors>
             </DataGrid>
         </TabItem>
         <TabItem Header="DislayDataGrid">
-            <local:DislayDataGrid ItemsSource="{h:GetStudents Count=50}">
-
-            </local:DislayDataGrid>
+            <local:DislayDataGrid ItemsSource="{h:GetStudents Count=50}" />
         </TabItem>
 
         <TabItem Header="Grid - SharedSizeGroup">
@@ -260,23 +362,24 @@
                     <DataTemplate>
                         <Grid ShowGridLines="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition SharedSizeGroup="group1"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition SharedSizeGroup="group1" />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Address}" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Address}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Name}" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </TabItem>
         <TabItem Header="GetAgeConverter">
-            <TextBlock Text="{Binding Source={x:Static s:DateTime.MinValue},Converter={local:GetAgeConverter}}"/>
+            <TextBlock Text="{Binding Source={x:Static s:DateTime.MinValue}, Converter={local:GetAgeConverter}}" />
         </TabItem>
         <TabItem Header="ProcessCommand">
-            <Button Content="打开D盘" 
-                    Style="{DynamicResource {x:Static h:ButtonKeys.Default}}" 
-                    Command="{h:ProcessCommand}" CommandParameter="D:\"/>
+            <Button Command="{h:ProcessCommand}"
+                    CommandParameter="D:\"
+                    Content="打开D盘"
+                    Style="{DynamicResource {x:Static h:ButtonKeys.Default}}" />
         </TabItem>
     </TabControl>
 </Window>

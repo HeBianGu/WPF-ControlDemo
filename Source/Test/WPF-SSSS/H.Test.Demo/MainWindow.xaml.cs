@@ -20,5 +20,13 @@ namespace H.Test.Demo
         {
             InitializeComponent();
         }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+                this.tb_doubleclick.Text += "双击" + Environment.NewLine;
+            if (e.ClickCount == 3)
+                this.tb_doubleclick.Text += "三连击" + Environment.NewLine;
+        }
     }
 }

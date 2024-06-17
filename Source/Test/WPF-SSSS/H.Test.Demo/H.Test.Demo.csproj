@@ -22,6 +22,7 @@
     <PackageReference Include="H.Extensions.Common" Version="1.0.0" />
     <PackageReference Include="H.Extensions.Geometry" Version="1.0.0" />
     <PackageReference Include="H.Extensions.MarkupExtension" Version="1.0.0" />
+    <PackageReference Include="H.Extensions.Tree" Version="1.0.0" />
     <PackageReference Include="H.Extensions.TypeConverter" Version="1.0.0" />
     <PackageReference Include="H.Extensions.ValueConverter" Version="1.0.0" />
     <PackageReference Include="H.Extensions.ViewModel" Version="1.0.0" />
