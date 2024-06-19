@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:H.Test.Demo"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
+        x:Name="w"
         Title="MainWindow"
         Width="800"
         Height="450"
@@ -25,6 +26,20 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+        <TabItem Header="PropertyGrid">
+            <DockPanel>
+                <h:PropertyGrid SelectedObject="{Binding ElementName=btn}" DockPanel.Dock="Right" Width="350"/>
+                <Button x:Name="btn" Content="我是按钮" />
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="AdornerDialog">
+            <Button Click="Button_AdornerDialog_Click" Content="AdornerDialog加载" />
+        </TabItem>
+
+        <TabItem Header="BeiginInvoke">
+            <Button Click="Button_Click" Content="BeginInvoke加载" />
+        </TabItem>
 
         <TabItem Header="Grid监测双击">
             <Grid Background="Transparent" MouseDown="Grid_MouseDown">

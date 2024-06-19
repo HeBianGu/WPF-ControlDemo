@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using H.Modules.Messages.Dialog;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Data;
@@ -27,6 +28,17 @@ namespace H.Test.Demo
                 this.tb_doubleclick.Text += "双击" + Environment.NewLine;
             if (e.ClickCount == 3)
                 this.tb_doubleclick.Text += "三连击" + Environment.NewLine;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            BeiginInvokeWindow beiginInvokeWindow=new BeiginInvokeWindow();
+            beiginInvokeWindow.Show();
+        }
+
+        private void Button_AdornerDialog_Click(object sender, RoutedEventArgs e)
+        {
+            AdornerDialog.ShowPresenter("我是AdornerDialog");
         }
     }
 }
