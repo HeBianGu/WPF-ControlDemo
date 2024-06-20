@@ -13,6 +13,9 @@
         Height="450"
         FontSize="20"
         mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -26,6 +29,64 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+        <TabItem Header="Menu- Binding">
+            <Menu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Command" Value="{local:ShowDialogCommand}"/>
+                        <Setter Property="CommandParameter" Value="{Binding Model}"/>
+                    </Style>
+                </Menu.ItemContainerStyle>
+                <Menu.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                        <TextBlock  VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                    </HierarchicalDataTemplate>
+                </Menu.ItemTemplate>
+            </Menu>
+        </TabItem>
+        <TabItem Header="ContextMenu - Binding">
+            <TextBlock Text="右键弹出菜单">
+                <TextBlock.ContextMenu>
+                    <ContextMenu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                        <ContextMenu.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Command" Value="{local:ShowDialogCommand}"/>
+                                <Setter Property="CommandParameter" Value="{Binding Model}"/>
+                            </Style>
+                        </ContextMenu.ItemContainerStyle>
+                        <ContextMenu.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                <DockPanel>
+                                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                                    <TextBlock  VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                        </ContextMenu.ItemTemplate>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
+        </TabItem>
+
+        <TabItem Header="DependencyPropertyDescriptor">
+            <DockPanel>
+                <ComboBox x:Name="cbb_dpd" DockPanel.Dock="Top">
+                    <SolidColorBrush Color="Yellow"/>
+                    <SolidColorBrush Color="Orange"/>
+                    <SolidColorBrush Color="Purple"/>
+                    <SolidColorBrush Color="Green"/>
+                </ComboBox>
+                <TextBlock x:Name="g_dpd" 
+                           TextAlignment="Center" 
+                           FontSize="100" 
+                           VerticalAlignment="Stretch" 
+                           Background="{Binding ElementName=cbb_dpd,Path=SelectedItem}"/>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Header="IsAsync">
+            <Button x:Name="btn_async" Content="使用IsAsync" Click="btn_async_Click"/>
+        </TabItem>
 
         <TabItem Header="PropertyGrid">
             <DockPanel>

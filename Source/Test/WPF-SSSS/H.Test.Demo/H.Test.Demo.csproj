@@ -29,6 +29,7 @@
     <PackageReference Include="H.Extensions.ViewModel" Version="1.0.0" />
     <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.0" />
     <PackageReference Include="H.Styles.Default" Version="1.0.0" />
+
   </ItemGroup>
 
   <ItemGroup>
