@@ -12,6 +12,9 @@
         Height="450"
         FontSize="20"
         mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -25,6 +28,27 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+
+        <TabItem Header="DependencyPropertyDescriptor">
+            <DockPanel>
+                <ComboBox x:Name="cbb_dpd" DockPanel.Dock="Top">
+                    <SolidColorBrush Color="Yellow"/>
+                    <SolidColorBrush Color="Orange"/>
+                    <SolidColorBrush Color="Purple"/>
+                    <SolidColorBrush Color="Green"/>
+                </ComboBox>
+                <TextBlock x:Name="g_dpd" 
+                           TextAlignment="Center" 
+                           FontSize="100" 
+                           VerticalAlignment="Stretch" 
+                           Background="{Binding ElementName=cbb_dpd,Path=SelectedItem}"/>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Header="IsAsync">
+            <Button x:Name="btn_async" Content="使用IsAsync" Click="btn_async_Click"/>
+        </TabItem>
 
         <TabItem Header="Grid监测双击">
             <Grid Background="Transparent" MouseDown="Grid_MouseDown">

@@ -1,0 +1,22 @@
+﻿<Window x:Class="H.Test.Demo.IsAsyncWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:H.Test.Demo"
+        mc:Ignorable="d"
+        Title="IsAsyncWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <ListBox ItemsSource="{Binding Collection,IsAsync=True}"  
+                 VirtualizingPanel.IsVirtualizing="False">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="1.jpeg"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
