@@ -8,10 +8,22 @@
         Width="800"
         Height="450"
         mc:Ignorable="d">
-    <Grid Background="Orange">
-        <Button HorizontalAlignment="Center"
+    <TabControl>
+        <TabItem Header="AdornerDialog加载">
+            <Grid Background="Orange">
+                <Button HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Button_AdornerDialog_Click"
                 Content="AdornerDialog加载" />
-    </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="AdornerDialog加载">
+            <Grid Background="Orange">
+                <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="Button_AdornerDialog_Click"
+                Content="AdornerDialog加载" />
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using H.Modules.Messages.Dialog;
 using H.Providers.Ioc;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
