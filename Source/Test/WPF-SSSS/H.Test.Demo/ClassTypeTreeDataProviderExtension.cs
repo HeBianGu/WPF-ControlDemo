@@ -1,10 +1,19 @@
 ﻿using H.Extensions.Tree;
 using H.Providers.Mvvm;
 using System.Collections;
+using System.Windows;
 using System.Windows.Markup;
 
 namespace H.Test.Demo
 {
+    public class ShowDialogCommand : MarkupCommandBase
+    {
+        public override void Execute(object parameter)
+        {
+            MessageBox.Show(parameter?.ToString());
+        }
+    }
+
     public class ClassTypeTreeDataProviderExtension : MarkupExtension
     {
         public Type Type { get; set; }

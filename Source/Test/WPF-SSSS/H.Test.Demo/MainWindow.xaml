@@ -29,6 +29,43 @@
             </DataTemplate>
         </TabControl.ContentTemplate>
 
+        <TabItem Header="Menu- Binding">
+            <Menu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Command" Value="{local:ShowDialogCommand}"/>
+                        <Setter Property="CommandParameter" Value="{Binding Model}"/>
+                    </Style>
+                </Menu.ItemContainerStyle>
+                <Menu.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                        <TextBlock  VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                    </HierarchicalDataTemplate>
+                </Menu.ItemTemplate>
+            </Menu>
+        </TabItem>
+        <TabItem Header="ContextMenu - Binding">
+            <TextBlock Text="右键弹出菜单">
+                <TextBlock.ContextMenu>
+                    <ContextMenu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                        <ContextMenu.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Command" Value="{local:ShowDialogCommand}"/>
+                                <Setter Property="CommandParameter" Value="{Binding Model}"/>
+                            </Style>
+                        </ContextMenu.ItemContainerStyle>
+                        <ContextMenu.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
+                                <DockPanel>
+                                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                                    <TextBlock  VerticalAlignment="Center" Text="{Binding Model.Name}" />
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                        </ContextMenu.ItemTemplate>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
+        </TabItem>
 
         <TabItem Header="DependencyPropertyDescriptor">
             <DockPanel>
