@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:h="https://github.com/HeBianGu"
     xmlns:local="clr-namespace:H.Test.Demo2"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
@@ -39,6 +40,41 @@
                 <Button Command="{Binding ShowDialogNoticeCommand}" Content="对话框提示" />
                 <Button Command="{Binding ShowNoticeCommand}" Content="自定义消息" />
             </UniformGrid>
+        </TabItem>
+        <TabItem Header="二维码控件">
+            <DockPanel>
+                <h:PropertyGrid
+                    Width="300"
+                    DockPanel.Dock="Right"
+                    HideInheritedProperties="True"
+                    SelectedObject="{Binding ElementName=qrb}" />
+                <QRCoderBox x:Name="qrb" PlainText="123456789" />
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="PDF控件">
+            <h:PDFBox />
+        </TabItem>
+        <TabItem Header="FilterColumnDataGrid">
+            <h:FilterColumnDataGrid
+                AutoGenerateColumns="True"
+                CollectionType="{x:Type h:Student}"
+                ItemsSource="{Binding Students}"
+                PersistentFilter="True" />
+        </TabItem>
+
+        <TabItem Header="GridSplitterBox">
+            <h:GridSplitterBox ID="Left">
+                <Border>
+                    <Grid Background="Red">
+                        <TextBlock FontSize="100" Text="Center" />
+                    </Grid>
+                </Border>
+                <h:GridSplitterBox.MenuContent>
+                    <Border Background="Yellow">
+                        <TextBlock FontSize="100" Text="Menu" />
+                    </Border>
+                </h:GridSplitterBox.MenuContent>
+            </h:GridSplitterBox>
         </TabItem>
     </TabControl>
 </Window>

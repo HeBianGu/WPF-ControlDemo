@@ -8,6 +8,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="H.Controls.FilterColumnDataGrid" Version="1.0.1" />
+    <PackageReference Include="H.Controls.GridSplitterBox" Version="1.0.1" />
+    <PackageReference Include="H.Controls.PDF" Version="1.0.1" />
+    <PackageReference Include="H.Controls.PropertyGrid" Version="1.0.1" />
+    <PackageReference Include="H.Controls.QRCoderBox" Version="1.0.1" />
     <PackageReference Include="H.Data.Test" Version="1.0.1" />
     <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.1" />
     <PackageReference Include="H.Modules.Messages.Form" Version="1.0.1" />

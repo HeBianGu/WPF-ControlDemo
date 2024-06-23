@@ -13,6 +13,16 @@ namespace H.Test.Demo2
 {
     internal class MainViewModel : Bindable
     {
+        private Students _students = Student.Randoms(100);
+        public Students Students
+        {
+            get { return _students; }
+            set
+            {
+                _students = value;
+                RaisePropertyChanged();
+            }
+        }
         public RelayCommand ShowAdornerCommand => new RelayCommand(async (s, e) =>
         {
             var r = await AdornerDialog.ShowPresenter("我是AdornerDialog", x =>

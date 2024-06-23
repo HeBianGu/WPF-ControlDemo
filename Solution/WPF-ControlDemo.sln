@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Demo1", "..\Source\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfCustomControlLibrary1", "WpfCustomControlLibrary1\WpfCustomControlLibrary1.csproj", "{1E1EF32E-4C1B-4A55-B104-3DEB9077A774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Demo2", "..\Source\Test\H.Test.Demo2\H.Test.Demo2.csproj", "{D01290D6-AB5D-45CC-866A-744DA368F260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Demo2", "..\Source\Test\H.Test.Demo2\H.Test.Demo2.csproj", "{D01290D6-AB5D-45CC-866A-744DA368F260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Ribbon", "..\Source\Test\H.Test.Ribbon\H.Test.Ribbon.csproj", "{D7C19882-71F9-4515-9B34-21F9F5844D24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D01290D6-AB5D-45CC-866A-744DA368F260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D01290D6-AB5D-45CC-866A-744DA368F260}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D01290D6-AB5D-45CC-866A-744DA368F260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C19882-71F9-4515-9B34-21F9F5844D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C19882-71F9-4515-9B34-21F9F5844D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C19882-71F9-4515-9B34-21F9F5844D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C19882-71F9-4515-9B34-21F9F5844D24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
