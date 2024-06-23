@@ -8,6 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.0" />
+    <PackageReference Include="H.Data.Test" Version="1.0.1" />
+    <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.1" />
+    <PackageReference Include="H.Modules.Messages.Form" Version="1.0.1" />
+    <PackageReference Include="H.Modules.Messages.Notice" Version="1.0.1" />
   </ItemGroup>
 </Project>

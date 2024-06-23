@@ -1,29 +1,44 @@
-﻿<Window x:Class="H.Test.Demo2.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:H.Test.Demo2"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="MainWindow"
-        Width="800"
-        Height="450"
-        mc:Ignorable="d">
-    <TabControl>
+﻿<Window
+    x:Class="H.Test.Demo2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:H.Test.Demo2"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="1200"
+    Height="750"
+    FontSize="20"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="10,6" />
+        </Style>
+    </Window.Resources>
+    <TabControl Background="Transparent">
         <TabItem Header="AdornerDialog加载">
-            <Grid Background="Orange">
-                <Button HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Click="Button_AdornerDialog_Click"
-                Content="AdornerDialog加载" />
-            </Grid>
+            <Button Command="{Binding ShowAdornerCommand}" Content="AdornerDialog对话框" />
         </TabItem>
-        <TabItem Header="AdornerDialog加载">
-            <Grid Background="Orange">
-                <Button HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Click="Button_AdornerDialog_Click"
-                Content="AdornerDialog加载" />
-            </Grid>
+        <TabItem Header="对话框加载">
+            <Button Command="{Binding ShowFormCommand}" Content="Form对话框" />
+        </TabItem>
+        <TabItem Header="Notice提示框">
+            <UniformGrid>
+                <Button Command="{Binding ShowInfoNoticeCommand}" Content="运行提示" />
+                <Button Command="{Binding ShowSuccessNoticeCommand}" Content="成功提示" />
+                <Button Command="{Binding ShowErrorNoticeCommand}" Content="错误提示" />
+                <Button Command="{Binding ShowWarnNoticeCommand}" Content="警告提示" />
+                <Button Command="{Binding ShowFatalNoticeCommand}" Content="严重错误提示" />
+                <Button Command="{Binding ShowProgressNoticeCommand}" Content="进度条提示" />
+                <Button Command="{Binding ShowStringNoticeCommand}" Content="字符串提示" />
+                <Button Command="{Binding ShowDialogNoticeCommand}" Content="对话框提示" />
+                <Button Command="{Binding ShowNoticeCommand}" Content="自定义消息" />
+            </UniformGrid>
         </TabItem>
     </TabControl>
 </Window>
