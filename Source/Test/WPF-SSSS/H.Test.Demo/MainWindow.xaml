@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:H.Test.Demo"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
         x:Name="w"
         Title="MainWindow"
         Width="800"
@@ -29,6 +30,41 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+
+
+
+        <!--<TabItem Header="MyGenericTypes">
+            <TabItem.Resources>
+                <x:Array Type="{x:Type System:Type}"  x:Key="ListWithTwoStringTypes">
+                    <x:Type TypeName="s:String" />
+                    <x:Type TypeName="s:String" />
+                </x:Array>
+                <local:GenericType BaseType="{x:Type TypeName=Generic:Dictionary`2}" 
+                       InnerTypes="{StaticResource ListWithTwoStringTypes}"
+                       x:Key="DictionaryStringString" />
+                <DataTemplate DataType="{StaticResource DictionaryStringString}">
+                    <TextBlock Text="Hi Dictionary" FontSize="40" Foreground="Cyan"/>
+                </DataTemplate>
+            </TabItem.Resources>
+            <ListBox ItemsSource="{Binding MyGenericTypes}"/>
+        </TabItem>-->
+
+
+        <TabItem Header="MyGenericTypes">
+            <TabItem.Resources>
+                <DataTemplate DataType="MyGenericClass&lt;string&gt;">
+                    <TextBlock Text="我是Int32"/>
+                </DataTemplate>
+                <!--<DataTemplate DataType="{x:Type local:MyGenericClass&lt;s:Int32&gt;}">
+                    <TextBlock Text="1111"/>
+                </DataTemplate>-->
+                <local:MyDataTemplate>
+                    <TextBlock Text="我是String"/>
+                </local:MyDataTemplate>
+                <local:MyDataTemplateExtension/>
+            </TabItem.Resources>
+            <ListBox ItemsSource="{Binding MyGenericTypes}"/>
+        </TabItem>
 
         <TabItem Header="Menu- Binding">
             <Menu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
