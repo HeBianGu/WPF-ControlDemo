@@ -49,22 +49,22 @@
             <ListBox ItemsSource="{Binding MyGenericTypes}"/>
         </TabItem>-->
 
-
-        <TabItem Header="MyGenericTypes">
+        <!--<TabItem Header="MyGenericTypes">
             <TabItem.Resources>
                 <DataTemplate DataType="MyGenericClass&lt;string&gt;">
                     <TextBlock Text="我是Int32"/>
                 </DataTemplate>
-                <!--<DataTemplate DataType="{x:Type local:MyGenericClass&lt;s:Int32&gt;}">
+                -->
+        <!--<DataTemplate DataType="{x:Type local:MyGenericClass&lt;s:Int32&gt;}">
                     <TextBlock Text="1111"/>
                 </DataTemplate>-->
+        <!--
                 <local:MyDataTemplate>
                     <TextBlock Text="我是String"/>
                 </local:MyDataTemplate>
-                <local:MyDataTemplateExtension/>
             </TabItem.Resources>
             <ListBox ItemsSource="{Binding MyGenericTypes}"/>
-        </TabItem>
+        </TabItem>-->
 
         <TabItem Header="Menu- Binding">
             <Menu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">

@@ -46,7 +46,7 @@ namespace H.Test.Demo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BeiginInvokeWindow beiginInvokeWindow=new BeiginInvokeWindow();
+            BeiginInvokeWindow beiginInvokeWindow = new BeiginInvokeWindow();
             beiginInvokeWindow.Show();
         }
 

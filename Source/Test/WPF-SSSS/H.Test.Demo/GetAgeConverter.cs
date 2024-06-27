@@ -40,42 +40,42 @@ namespace H.Test.Demo
     }
 
 
-    public class MyDataTemplate : DataTemplate
-    {
-        public MyDataTemplate()
-        {
+    //public class MyDataTemplate : DataTemplate
+    //{
+    //    public MyDataTemplate()
+    //    {
 
-        }
-        public MyDataTemplate(object dataType) : base(dataType)
-        {
+    //    }
+    //    public MyDataTemplate(object dataType) : base(dataType)
+    //    {
 
-        }
-        public Type BaseType { get; set; }
-    }
+    //    }
+    //    public Type BaseType { get; set; }
+    //}
 
-    public class GenericType : MarkupExtension
-    {
-        public GenericType()
-        {
+    //public class GenericType : MarkupExtension
+    //{
+    //    public GenericType()
+    //    {
 
-        }
+    //    }
 
-        public GenericType(Type baseType, params Type[] innerTypes)
-        {
-            BaseType = baseType;
-            InnerTypes = innerTypes;
-        }
+    //    public GenericType(Type baseType, params Type[] innerTypes)
+    //    {
+    //        BaseType = baseType;
+    //        InnerTypes = innerTypes;
+    //    }
 
-        public Type BaseType { get; set; }
+    //    public Type BaseType { get; set; }
 
-        public Type[] InnerTypes { get; set; }
+    //    public Type[] InnerTypes { get; set; }
 
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            Type result = BaseType.MakeGenericType(InnerTypes);
-            return result;
-        }
-    }
+    //    public override object ProvideValue(IServiceProvider serviceProvider)
+    //    {
+    //        Type result = BaseType.MakeGenericType(InnerTypes);
+    //        return result;
+    //    }
+    //}
 
     public class MyDataTemplateExtension : MarkupExtension
     {
