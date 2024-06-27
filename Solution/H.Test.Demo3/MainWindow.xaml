@@ -11,7 +11,7 @@
     <Grid>
         <DockPanel>
             <ItemsControl DockPanel.Dock="Left">
-                <h:GeometryNodeData />
+                <h:GeometryNodeData Text="节点"/>
             </ItemsControl>
             <h:Diagram>
                 <h:Diagram.Layout>
