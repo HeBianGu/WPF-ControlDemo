@@ -54,6 +54,11 @@ namespace H.Test.Demo
         {
             AdornerDialog.ShowPresenter("我是AdornerDialog");
         }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Grid_Loaded");
+        }
     }
 
 }

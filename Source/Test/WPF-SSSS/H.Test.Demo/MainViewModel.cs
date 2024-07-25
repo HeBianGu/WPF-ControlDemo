@@ -1,4 +1,4 @@
-﻿using H.Providers.Mvvm;
+﻿using H.Mvvm;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H.Test.Demo
 {
-    internal class MainViewModel : NotifyPropertyChangedBase
+    internal class MainViewModel : BindableBase
     {
         private ObservableCollection<string> _collection = new ObservableCollection<string>();
         public ObservableCollection<string> Collection
@@ -58,7 +58,7 @@ namespace H.Test.Demo
 
     }
 
-    public class TaskCompletionSourceTest : NotifyPropertyChangedBase
+    public class TaskCompletionSourceTest : Bindable
     {
 
         private string _message;

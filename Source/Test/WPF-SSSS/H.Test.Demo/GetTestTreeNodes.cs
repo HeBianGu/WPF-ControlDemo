@@ -1,6 +1,6 @@
 ﻿
 using H.Data.Test;
-using H.Providers.Mvvm;
+using H.Mvvm;
 using System.Collections.ObjectModel;
 using System.Windows.Markup;
 using System.Xml.Linq;

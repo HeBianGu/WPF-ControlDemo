@@ -14,21 +14,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="H.Controls.PropertyGrid" Version="1.0.0" />
-    <PackageReference Include="H.Controls.Form" Version="1.0.0" />
-    <PackageReference Include="H.Data.Test" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Attach" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Behvaiors" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Command" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Common" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Geometry" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.MarkupExtension" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.Tree" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.TypeConverter" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.ValueConverter" Version="1.0.0" />
-    <PackageReference Include="H.Extensions.ViewModel" Version="1.0.0" />
-    <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.0" />
-    <PackageReference Include="H.Styles.Default" Version="1.0.0" />
+    <PackageReference Include="H.Controls.PropertyGrid" Version="1.0.2" />
+    <PackageReference Include="H.Controls.Form" Version="1.0.2" />
+    <PackageReference Include="H.Controls.TreeLayoutBox" Version="1.0.2" />
+    <PackageReference Include="H.Data.Test" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Attach" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Behvaiors" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Command" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Common" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Geometry" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.MarkupExtension" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.Tree" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.TypeConverter" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.ValueConverter" Version="1.0.2" />
+    <PackageReference Include="H.Extensions.ViewModel" Version="1.0.2" />
+    <PackageReference Include="H.Modules.Messages.Dialog" Version="1.0.2" />
+    <PackageReference Include="H.Services.Operation" Version="1.0.2" />
+    <PackageReference Include="H.Styles.Default" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

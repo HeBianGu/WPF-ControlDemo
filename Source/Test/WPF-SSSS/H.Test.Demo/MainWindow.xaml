@@ -11,8 +11,8 @@
     xmlns:s="clr-namespace:System;assembly=mscorlib"
     x:Name="w"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="1200"
+    Height="750"
     d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}}"
     FontSize="20"
     mc:Ignorable="d">
@@ -33,7 +33,59 @@
             </DataTemplate>
         </TabControl.ContentTemplate>
 
-
+        <TabItem Header="TabControl持久保存页面">
+            <TabControl ItemsSource="{h:GetStudents Count=10}">
+                <TabControl.Resources>
+                    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    <DataTemplate DataType="{x:Type h:Student}">
+                        <Grid Loaded="Grid_Loaded">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBox HorizontalAlignment="Stretch" />
+                            <GridSplitter Grid.Column="1"
+                                          Width="5"
+                                          ResizeBehavior="PreviousAndNext" />
+                            <h:Form Grid.Column="2"
+                                    SelectObject="{Binding}" />
+                        </Grid>
+                    </DataTemplate>
+                </TabControl.Resources>
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ListBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=ItemsSource}"
+                                 SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=SelectedItem}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+        </TabItem>
 
         <!--<TabItem Header="MyGenericTypes">
             <TabItem.Resources>
@@ -86,8 +138,13 @@
             </ListBox>
         </TabItem>
 
+        <TabItem Header="TreeLayoutBox">
+            <h:TreeLayoutBox ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}" />
+        </TabItem>
         <TabItem Header="TreeView">
-            <TreeView Grid.IsSharedSizeScope="True" ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+            <TreeView Grid.IsSharedSizeScope="True"
+                      ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True,
+                                                                Type={x:Type FrameworkElement}}">
                 <TreeView.Resources>
                     <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
                         <Setter Property="Focusable" Value="False" />
@@ -257,10 +314,10 @@
             </TreeView>
         </TabItem>
         <TabItem Header="Menu- Binding">
-            <Menu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+            <Menu ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
                 <Menu.ItemContainerStyle>
                     <Style TargetType="MenuItem">
-                        <Setter Property="Command" Value="{local:ShowDialogCommand}" />
+                        <Setter Property="Command" Value="{h:ShowViewCommand}" />
                         <Setter Property="CommandParameter" Value="{Binding Model}" />
                     </Style>
                 </Menu.ItemContainerStyle>
@@ -274,10 +331,10 @@
         <TabItem Header="ContextMenu - Binding">
             <TextBlock Text="右键弹出菜单">
                 <TextBlock.ContextMenu>
-                    <ContextMenu ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+                    <ContextMenu ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
                         <ContextMenu.ItemContainerStyle>
                             <Style TargetType="MenuItem">
-                                <Setter Property="Command" Value="{local:ShowDialogCommand}" />
+                                <Setter Property="Command" Value="{h:ShowViewCommand}" />
                                 <Setter Property="CommandParameter" Value="{Binding Model}" />
                             </Style>
                         </ContextMenu.ItemContainerStyle>
@@ -360,7 +417,7 @@
         </TabItem>
 
         <TabItem Header="TreeView - 级联勾选">
-            <TreeView ItemsSource="{local:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
+            <TreeView ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
                         <DockPanel>
