@@ -7,7 +7,8 @@
         xmlns:h="https://github.com/HeBianGu"
         xmlns:local="clr-namespace:H.Test.Demo"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        xmlns:themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
         x:Name="w"
         Title="MainWindow"
         Width="1200"
@@ -34,23 +35,78 @@
             </DataTemplate>
         </TabControl.ContentTemplate>
 
+        <TabItem Header="OverridesDefaultStyle">
+            <UniformGrid>
+                <GroupBox Header="OverridesDefaultStyle-True">
+                    <Button Content="Button">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <!--  Set to true to not get any properties from the themes.  -->
+                                <Setter Property="OverridesDefaultStyle" Value="True" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Ellipse Fill="{TemplateBinding Background}" />
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </GroupBox>
+                <GroupBox Header="OverridesDefaultStyle-False">
+                    <Button Content="Button">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                                <Ellipse Fill="{TemplateBinding Background}" />
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </GroupBox>
+            </UniformGrid>
+        </TabItem>
+
         <TabItem Header="BorderGapMaskConverter">
             <TabItem.Resources>
                 <BorderGapMaskConverter x:Key="BorderGapMaskConverter" />
             </TabItem.Resources>
             <GroupBox Header="带间隙的边框">
-                <Border BorderBrush="Black" BorderThickness="2">
+                <Border BorderBrush="Black"
+                        BorderThickness="2">
                     <Border.OpacityMask>
-                        <MultiBinding Converter="{StaticResource BorderGapMaskConverter}" ConverterParameter="6">
-                            <Binding ElementName="tb" Path="ActualWidth" />
-                            <Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
-                            <Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
-                            <Binding RelativeSource="{RelativeSource Self}" Path="BorderThickness" />
-                            <Binding RelativeSource="{RelativeSource Self}" Path="CornerRadius" />
-                            <!-- 间隙宽度 -->
+                        <MultiBinding Converter="{StaticResource BorderGapMaskConverter}"
+                                      ConverterParameter="6">
+                            <Binding ElementName="tb"
+                                     Path="ActualWidth" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource Self}" />
+                            <Binding Path="BorderThickness"
+                                     RelativeSource="{RelativeSource Self}" />
+                            <Binding Path="CornerRadius"
+                                     RelativeSource="{RelativeSource Self}" />
+                            <!--  间隙宽度  -->
                         </MultiBinding>
                     </Border.OpacityMask>
-                    <TextBlock x:Name="tb" HorizontalAlignment="Center" VerticalAlignment="Center" Text="带间隙的边框" />
+                    <TextBlock x:Name="tb"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="带间隙的边框" />
                 </Border>
             </GroupBox>
         </TabItem>
