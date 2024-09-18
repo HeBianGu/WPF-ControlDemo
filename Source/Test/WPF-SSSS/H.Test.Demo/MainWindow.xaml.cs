@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace H.Test.Demo
 {
@@ -58,6 +59,14 @@ namespace H.Test.Demo
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Grid_Loaded");
+        }
+
+        private void GridLine_Loaded(object sender, RoutedEventArgs e)
+        {
+            Grid grid = sender as Grid;
+            GridLineAdorner gridLineAdorner = new GridLineAdorner(grid);
+            var layer = AdornerLayer.GetAdornerLayer(grid);
+            layer.Add(gridLineAdorner);
         }
     }
 

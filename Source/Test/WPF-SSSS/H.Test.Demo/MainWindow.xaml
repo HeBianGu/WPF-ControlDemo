@@ -32,6 +32,149 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+        <TabItem Header="Grid显示网格线的几种方式">
+            <TabControl TabStripPlacement="Bottom">
+                <TabItem Header="使用OnRender绘制">
+                    <local:LineGrid Margin="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="5"
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="White"
+                            Text="LineGrid" />
+
+                        <Label
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            Content="Center"
+                            FontSize="50" />
+                    </local:LineGrid>
+                </TabItem>
+                <TabItem Header="ShowGridLines">
+                    <Grid Margin="50" ShowGridLines="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="5"
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="White"
+                            Text="LineGrid" />
+
+                        <Label
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            Content="Center"
+                            FontSize="50" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="使用Adoner绘制">
+                    <AdornerDecorator>
+                        <Grid Margin="50" Loaded="GridLine_Loaded">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="5"
+                                Margin="1"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="White"
+                                Text="LineGrid" />
+
+                            <Label
+                                Margin="1"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Background="White"
+                                Content="Center"
+                                FontSize="50" />
+                        </Grid>
+
+
+                    </AdornerDecorator>
+                </TabItem>
+
+                <TabItem Header="GridLineAttach添加Border">
+                    <Grid Margin="50" local:GridLineAttach.Use="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="5"
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="White"
+                            Text="LineGrid" />
+
+                        <Label
+                            Margin="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            Content="Center"
+                            FontSize="50" />
+                        <TextBlock Text="1" Grid.Row="1"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </TabItem>
 
         <TabItem Header="TabControl持久保存页面">
             <TabControl ItemsSource="{h:GetStudents Count=10}">
@@ -45,11 +188,11 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <TextBox HorizontalAlignment="Stretch" />
-                            <GridSplitter Grid.Column="1"
-                                          Width="5"
-                                          ResizeBehavior="PreviousAndNext" />
-                            <h:Form Grid.Column="2"
-                                    SelectObject="{Binding}" />
+                            <GridSplitter
+                                Grid.Column="1"
+                                Width="5"
+                                ResizeBehavior="PreviousAndNext" />
+                            <h:Form Grid.Column="2" SelectObject="{Binding}" />
                         </Grid>
                     </DataTemplate>
                 </TabControl.Resources>
@@ -60,8 +203,7 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ListBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=ItemsSource}"
-                                 SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=SelectedItem}">
+                        <ListBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=ItemsSource}" SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=SelectedItem}">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <Grid />
@@ -142,9 +284,7 @@
             <h:TreeLayoutBox ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}" />
         </TabItem>
         <TabItem Header="TreeView">
-            <TreeView Grid.IsSharedSizeScope="True"
-                      ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True,
-                                                                Type={x:Type FrameworkElement}}">
+            <TreeView Grid.IsSharedSizeScope="True" ItemsSource="{h:ClassTypeTreeDataProvider IsRecursion=True, Type={x:Type FrameworkElement}}">
                 <TreeView.Resources>
                     <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
                         <Setter Property="Focusable" Value="False" />
