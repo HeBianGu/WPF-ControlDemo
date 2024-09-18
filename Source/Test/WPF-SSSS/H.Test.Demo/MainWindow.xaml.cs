@@ -1,4 +1,5 @@
-﻿using H.Modules.Messages.Dialog;
+﻿using H.Data.Test;
+using H.Modules.Messages.Dialog;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text;
@@ -59,6 +60,15 @@ namespace H.Test.Demo
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Grid_Loaded");
+            //VisualBrush visualBrush = new VisualBrush();
+            //ContentPresenter contentPresenter = new ContentPresenter();
+            //DataTemplateKey dataTemplateKey = new DataTemplateKey(typeof(Student));
+            //contentPresenter.ContentTemplate=Application.Current.FindResource(dataTemplateKey) as DataTemplate;
+            //contentPresenter.Content = new Student();
+            //visualBrush.Visual = contentPresenter;
+            //contentPresenter.InvalidateMeasure();
+            //contentPresenter.InvalidateArrange();
+            //this.Background = visualBrush;
         }
 
         private void GridLine_Loaded(object sender, RoutedEventArgs e)

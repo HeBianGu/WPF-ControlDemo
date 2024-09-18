@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:H.Test.Demo"
+             xmlns:h="https://github.com/HeBianGu"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type h:Student}">
+            <TextBlock Text="我是全局定义的模板"/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
