@@ -8,20 +8,27 @@ namespace H.Test.Demo
 {
     public class LineGrid : Grid
     {
+        private readonly Pen _pen;
+        public LineGrid()
+        {
+            _pen = new Pen(SystemColors.ActiveBorderBrush, 1);
+            _pen.Freeze();
+        }
+
         protected override void OnRender(DrawingContext dc)
         {
-            Pen pen= new Pen(SystemColors.ActiveBorderBrush, 1);
+            base.OnRender(dc);
             foreach (RowDefinition item in this.RowDefinitions)
             {
-                dc.DrawLine(pen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
+                dc.DrawLine(_pen, new Point(0, item.Offset), new Point(this.ActualWidth, item.Offset));
             }
-            dc.DrawLine(pen, new Point(0, this.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
+            dc.DrawLine(_pen, new Point(0, this.ActualHeight), new Point(this.ActualWidth, this.ActualHeight));
 
             foreach (ColumnDefinition item in this.ColumnDefinitions)
             {
-                dc.DrawLine(pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
+                dc.DrawLine(_pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
             }
-            dc.DrawLine(pen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
+            dc.DrawLine(_pen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
         }
     }
 
@@ -29,11 +36,12 @@ namespace H.Test.Demo
     {
         public GridLineAdorner(UIElement adornedElement) : base(adornedElement)
         {
-         
+
         }
 
         protected override void OnRender(DrawingContext dc)
         {
+            base.OnRender(dc);
             Grid grid = this.AdornedElement as Grid;
             if (grid == null)
                 return;
@@ -49,7 +57,7 @@ namespace H.Test.Demo
                 dc.DrawLine(pen, new Point(item.Offset, 0), new Point(item.Offset, this.ActualHeight));
             }
             dc.DrawLine(pen, new Point(this.ActualWidth, 0), new Point(this.ActualWidth, this.ActualHeight));
-           
+
         }
     }
 

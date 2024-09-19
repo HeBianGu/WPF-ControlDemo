@@ -178,6 +178,15 @@
             </TabControl>
         </TabItem>
 
+        <TabItem Header="注册控件级全局事件">
+            <ItemsControl x:Name="ic_event" Mouse.GotMouseCapture="ic_event_GotMouseCapture" ButtonBase.Click="ItemsControl_Button_Click" ItemsSource="{h:GetStudents}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </TabItem>
         <TabItem Header="OverridesDefaultStyle">
             <UniformGrid>
                 <GroupBox Header="OverridesDefaultStyle-True">

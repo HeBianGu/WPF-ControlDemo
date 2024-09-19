@@ -30,6 +30,12 @@ namespace H.Test.Demo
             {
                 this.g_dpd.Text = this.g_dpd.Background.ToString();
             });
+
+            //在代码中注册控件级全局事件
+            this.ic_event.AddHandler(Button.ClickEvent, new RoutedEventHandler(ItemsControl_Button_Click));
+
+            //注册应用程序级全局事件
+            EventManager.RegisterClassHandler(typeof(Button), Button.ClickEvent, new RoutedEventHandler(ItemsControl_Button_Click));
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -77,6 +83,22 @@ namespace H.Test.Demo
             GridLineAdorner gridLineAdorner = new GridLineAdorner(grid);
             var layer = AdornerLayer.GetAdornerLayer(grid);
             layer.Add(gridLineAdorner);
+        }
+
+        private void ItemsControl_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is Button button)
+                MessageBox.Show(button.Content?.ToString());
+        }
+
+        private void ic_event_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
+
+        private void ic_event_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+
         }
     }
 
