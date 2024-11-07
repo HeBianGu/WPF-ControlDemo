@@ -24,6 +24,10 @@ namespace H.Test.Demo4
             InitializeComponent();
         }
 
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Test test = new Test();

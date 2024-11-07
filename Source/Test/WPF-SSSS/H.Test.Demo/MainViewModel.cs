@@ -6,11 +6,24 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Windows;
+using System.IO;
 
 namespace H.Test.Demo
 {
     internal class MainViewModel : BindableBase
     {
+        private ImageSource _ColorConvertedImagesource;
+        /// <summary> 说明  </summary>
+        public ImageSource ColorConvertedImageSource
+        {
+            get { return _ColorConvertedImagesource; }
+            set
+            {
+                _ColorConvertedImagesource = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private ObservableCollection<string> _collection = new ObservableCollection<string>();
         public ObservableCollection<string> Collection
         {
@@ -33,6 +46,44 @@ namespace H.Test.Demo
             this.TaskCompletionSourceTests.Add(new TaskCompletionSourceTest());
 
             this.DrawingContextWithWriteableBitmapExample();
+
+
+            {
+
+                // 创建源图像
+                BitmapImage bitmapImage = new BitmapImage(new Uri("1.jpeg", UriKind.Relative));
+
+                // 定义源颜色上下文 (sRGB)
+                ColorContext sourceColorContext = new ColorContext(PixelFormats.Bgra32);
+
+                // 定义目标颜色上下文 (scRGB)
+                ColorContext destinationColorContext = new ColorContext(PixelFormats.Gray16);
+
+                // 创建 ColorConvertedBitmap
+                ColorConvertedBitmap colorConvertedBitmap = new ColorConvertedBitmap(bitmapImage, sourceColorContext, destinationColorContext, PixelFormats.Pbgra32);
+
+                FormatConvertedBitmap newFormatedBitmapSource = new FormatConvertedBitmap();
+                newFormatedBitmapSource.BeginInit();
+                newFormatedBitmapSource.Source = bitmapImage;
+                newFormatedBitmapSource.DestinationFormat = PixelFormats.Gray8;
+                newFormatedBitmapSource.EndInit();
+
+                // 将 ColorConvertedBitmap 设置为 Image 控件的源
+                this.ColorConvertedImageSource = newFormatedBitmapSource;
+            }
+
+            {
+
+                //Stream imageStream = new FileStream("1.jpeg", FileMode.Open, FileAccess.Read, FileShare.Read);
+                //BitmapSource myBitmapSource = BitmapFrame.Create(imageStream);
+                //BitmapFrame myBitmapSourceFrame = (BitmapFrame)myBitmapSource;
+                ////ColorContext sourceColorContext = myBitmapSourceFrame.ColorContexts[0];
+                //ColorContext sourceColorContext = new ColorContext(PixelFormats.Bgra32);
+                //ColorContext destColorContext = new ColorContext(PixelFormats.Prgba128Float);
+                //ColorConvertedBitmap ccb = new ColorConvertedBitmap(myBitmapSource, sourceColorContext, destColorContext, PixelFormats.Pbgra32);
+                //this.ColorConvertedImageSource = ccb;
+                ////imageStream.Close();
+            }
         }
 
 
@@ -138,6 +189,39 @@ namespace H.Test.Demo
                 encoder.Save(stream);
             }
         }
+
+        //public void SaveAsIcon(RenderTargetBitmap renderTargetBitmap, string filePath)
+        //{
+        //    PngBitmapEncoder encoder = new PngBitmapEncoder();
+        //    encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+        //    using (var stream = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
+        //    {
+        //        encoder.Save(stream);
+        //    }
+
+        //    PngBitmapEncoder pngEncoder = new PngBitmapEncoder();
+        //    pngEncoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+        //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        pngEncoder.Save(stream);
+        //    }
+
+        //    // 使用 IconBitmapDecoder 读取 PNG 文件
+        //    using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+        //    {
+        //        IconBitmapDecoder iconDecoder = new IconBitmapDecoder(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+        //        BitmapFrame iconFrame = iconDecoder.Frames[0];
+
+        //        // 将图标帧保存为 ICO 文件
+        //        using (var iconStream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            IconBitmapEncoder iconEncoder = new IconBitmapEncoder();
+        //            iconEncoder.Frames.Add(iconFrame);
+        //            iconEncoder.Save(iconStream);
+        //        }
+        //    }
+        //}
+        //}
 
         public void SaveAsJpeg(RenderTargetBitmap renderTargetBitmap, string filePath)
         {

@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="1.jpeg" />
     <None Remove="2.jpg" />
   </ItemGroup>
 
@@ -34,7 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="1.jpeg" />
     <Resource Include="2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="1.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

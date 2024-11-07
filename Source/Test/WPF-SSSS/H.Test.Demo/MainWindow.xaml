@@ -33,6 +33,48 @@
                 </GroupBox>
             </DataTemplate>
         </TabControl.ContentTemplate>
+        <TabItem>
+            <TextBlock>
+                  <Bold>TextBlock</Bold> is designed to be <Italic>lightweight</Italic>,
+  and is geared specifically at integrating <Italic>small</Italic> portions
+  of flow content into a UI.
+            </TextBlock>
+        </TabItem>
+
+        <TabItem Header="ColorConvertedBitmap">
+            <!--<TabItem.Resources>
+                -->
+            <!-- 定义 ColorContext 资源 -->
+            <!--
+                <ColorContext x:Key="sRgbColorContext" Source="{x:Static ColorContext.SRgb}" />
+                <ColorContext x:Key="scRgbColorContext" Source="{x:Static ColorContext.ScRgb}" />
+            </TabItem.Resources>-->
+            <Image Width="200" Height="200" Source="{Binding ColorConvertedImageSource}">
+                <!--<Image.Source>
+                    <ColorConvertedBitmap DestinationFormat="{x:Static PixelFormats.Gray8}">
+                        <ColorConvertedBitmap.Source>
+                            <BitmapImage UriSource="2.jpg" />
+                        </ColorConvertedBitmap.Source>
+                    </ColorConvertedBitmap>
+                </Image.Source>-->
+            </Image>
+            <!--<Image Width="200" Height="200">
+                <Image.Source>
+                    <ColorConvertedBitmap DestinationColorContext="{Binding Source={x:Static ColorContext.ScRgb}}">
+                        <ColorConvertedBitmap.Source>
+                            <BitmapImage UriSource="2.jpg" />
+                        </ColorConvertedBitmap.Source>
+                        <ColorConvertedBitmap.SourceColorContext>
+                            <ColorContext>PixelFormats.Gray8</ColorContext>
+                        </ColorConvertedBitmap.SourceColorContext>
+                    </ColorConvertedBitmap>
+                </Image.Source>
+            </Image>-->
+        </TabItem>
+
+        <TabItem Header="测试异步绘制DrawingVisual">
+            <local:MyGrid/>
+        </TabItem>
 
         <TabItem Header="SaveToImage">
             <Grid>
