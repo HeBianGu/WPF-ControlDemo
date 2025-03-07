@@ -1,0 +1,34 @@
+﻿<Window x:Class="H.Test.PDF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.PDF"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="1200"
+        Height="850"
+        FontSize="18"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Button Command="{Binding OpenFileCommand}"
+                        Content="打开PDF"
+                        DockPanel.Dock="Right" />
+                <ComboBox Width="100"
+                          DockPanel.Dock="Right"
+                          ItemsSource="{Binding ElementName=v, Path=PageIndexs}"
+                          SelectedItem="{Binding ElementName=v, Path=PageIndex}" />
+                <TextBlock Text="{Binding FilePath}"
+                           TextTrimming="CharacterEllipsis" />
+            </DockPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <local:PDFViewer x:Name="v"
+                                 FilePath="{Binding FilePath}" />
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

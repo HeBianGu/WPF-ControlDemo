@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="H.Mvvm" Version="1.0.3" />
+    <PackageReference Include="PdfPig" Version="0.1.9" />
+    <!--<PackageReference Include="PDFsharp" Version="6.1.1" />-->
+  </ItemGroup>
+</Project>
