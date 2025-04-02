@@ -318,6 +318,9 @@ namespace H.Test.PDF
                 drawingContext.DrawText(formattedText, new Point(p.X, page.Height - p.Y));
             }
 
+
+            System.Diagnostics.Debug.WriteLine("数量:"+ page.ExperimentalAccess.Paths.Count);
+
             foreach (PdfPath path in page.ExperimentalAccess.Paths)
             {
                 foreach (PdfSubpath item in path)

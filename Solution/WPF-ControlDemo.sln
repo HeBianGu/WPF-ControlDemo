@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Demo5", "..\Source\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.PDF", "..\Source\Test\H.Test.PDF\H.Test.PDF.csproj", "{A3F879CF-5408-432A-B6E8-35F28F5E5C64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.GraphLayout", "..\Source\Test\H.Test.GraphLayout\H.Test.GraphLayout.csproj", "{AECF85CD-6B8B-4D96-8A77-16B1B9EF20D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{A3F879CF-5408-432A-B6E8-35F28F5E5C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3F879CF-5408-432A-B6E8-35F28F5E5C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3F879CF-5408-432A-B6E8-35F28F5E5C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AECF85CD-6B8B-4D96-8A77-16B1B9EF20D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECF85CD-6B8B-4D96-8A77-16B1B9EF20D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECF85CD-6B8B-4D96-8A77-16B1B9EF20D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECF85CD-6B8B-4D96-8A77-16B1B9EF20D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
