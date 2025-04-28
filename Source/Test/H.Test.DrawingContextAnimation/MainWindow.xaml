@@ -1,0 +1,34 @@
+﻿<Window x:Class="H.Test.DrawingContextAnimation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:H.Test.DrawingContextAnimation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        mc:Ignorable="d">
+    <Grid>
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="DrawingContext 中应用颜色动画">
+                <local:MyControl />
+            </TabItem>
+            <TabItem Header="DrawingContext 中应用AnimationClock颜色动画">
+                <local:MyControl1 />
+            </TabItem>
+            <TabItem Header="DrawingContext PushOpacity中应用动画">
+                <local:MyControl2 />
+            </TabItem>
+            <TabItem Header="DrawingContext PushTransform中应用动画">
+                <local:MyControl3 />
+            </TabItem>
+            <TabItem Header="DrawingContext Geometry中应用动画">
+                <local:MyControl5 />
+            </TabItem>
+
+            <TabItem Header="DrawingContext PathGeometry中应用动画">
+                <local:MyControl6 />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
