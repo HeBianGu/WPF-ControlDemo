@@ -313,6 +313,7 @@ namespace H.Test.PDF
 
             foreach (Word item in page.GetWords())
             {
+                drawingContext.DrawRectangle(Brushes.Green, null, new Rect(item.BoundingBox.Left, page.Height - item.BoundingBox.Top, item.BoundingBox.Width, item.BoundingBox.Height));
                 var p = item.BoundingBox.TopLeft;
                 FormattedText formattedText = new FormattedText(item.Text, System.Globalization.CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface(item.FontName), item.BoundingBox.Height + 0, Brushes.Black);
                 drawingContext.DrawText(formattedText, new Point(p.X, page.Height - p.Y));
