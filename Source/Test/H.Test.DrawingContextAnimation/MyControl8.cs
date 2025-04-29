@@ -47,6 +47,7 @@ namespace H.Test.DrawingContextAnimation
                         var frozen = drawingGroup.GetAsFrozen() as DrawingGroup;
                         Dispatcher.BeginInvoke(DispatcherPriority.Input, () =>
                         {
+                            //可以换成Dely方式或者先绘制整体再绘制局部细节分层绘制
                             this._drawingGroup = frozen;
                             this.InvalidateVisual();
                         });
