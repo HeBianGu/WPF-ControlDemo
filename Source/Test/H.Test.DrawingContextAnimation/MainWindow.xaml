@@ -29,6 +29,13 @@
             <TabItem Header="DrawingContext PathGeometry中应用动画">
                 <local:MyControl6 />
             </TabItem>
+
+            <TabItem Header="DrawingContext 异步绘制(Children方式)">
+                <local:MyControl7 />
+            </TabItem>
+            <TabItem Header="DrawingContext 异步绘制(Append方式)">
+                <local:MyControl8 />
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
