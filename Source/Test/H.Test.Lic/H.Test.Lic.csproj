@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+
+  <!-- 引用自定义任务 -->
+  <UsingTask
+    TaskName="LicenseValidatorTask"
+    AssemblyFile="H:\Github\WPF-ControlDemo\Source\Test\LicenseValidatorTask\bin\Debug\netstandard2.0\LicenseValidatorTask.dll" />
+
+  <!--<Target Name="LicenseValidatorTask" BeforeTargets="CoreCompile">
+    <LicenseValidatorTask>
+      <Output TaskParameter="IsValid" PropertyName="LicenseIsValid" />
+    </LicenseValidatorTask>
+    <Error Condition="'$(LicenseIsValid)' != 'true'"
+       Text="Build failed due to invalid license" />
+    <LicenseValidatorTask/>
+    <Error
+       Text="Build failed due to invalid license" />
+  </Target>
+  <Target Name="LicenseValidatorTask">
+    <LicenseValidatorTask/>
+    <Error Condition="'$(LicenseIsValid)' != 'true'"
+       Text="Build failed due to invalid license" />
+  </Target>
+
+  <Target Name="BeforeBuild" DependsOnTargets="ValidateLicense">
+    <Message Text="准备开始构建..." Importance="high"/>
+  </Target>-->
+
+
+  <Target Name="ValidateLicense" BeforeTargets="CoreCompile">
+    <!-- 显式复制所有依赖项 --><!--
+    <ItemGroup>
+      <TaskDependencies Include="$(MSBuildThisFileDirectory)../LicenseValidatorTask/bin/Debug/netstandard2.0/*.dll" />
+    </ItemGroup>-->
+
+    <!--<Copy SourceFiles="@(TaskDependencies)"
+          DestinationFolder="$(OutputPath)"
+          SkipUnchangedFiles="true" />-->
+    <LicenseValidatorTask ModuleName="VisionMaster"/>
+     <!--执行任务--><!-- 
+    <LicenseValidatorTask
+      LicenseFilePath="license.txt"
+      PublicKeyFilePath="public_key.pem" />-->
+  </Target>
+  
+  <!--在构建前验证许可证-->
+
+  <!--<Target Name="LicenseValidatorTask" BeforeTargets="CoreCompile">
+    <LicenseValidatorTask/>
+    --><!--<PropertyGroup>
+      <LicenseFile>$(MSBuildThisFileDirectory)license.txt</LicenseFile>
+      <PublicKeyFile>$(MSBuildThisFileDirectory)public_key.pem</PublicKeyFile>
+    </PropertyGroup>--><!--
+    --><!--
+
+    --><!--
+    --><!--<Message Importance="high" Text="Starting license validation..." />--><!--
+    --><!--
+    
+    --><!--
+    --><!--<LicenseValidatorTask>
+      <Output TaskParameter="IsValid" PropertyName="LicenseIsValid" />
+    </LicenseValidatorTask>--><!--
+    <Message Text="准备开始构建..." Importance="high"/>
+    --><!--<Error Condition="'$(LicenseIsValid)' != 'true'" 
+           Text="Build failed due to invalid license" />--><!--
+  </Target>-->
+
+  <!-- 确保任务DLL被复制到输出目录 -->
+  <!--
+  <ItemGroup>
+    <Content Include="..\LicenseValidatorTask\bin\$(Configuration)\net8.0-windows\LicenseValidatorTask.dll">
+      <Link>LicenseValidatorTask.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+  </ItemGroup>-->
+</Project>
