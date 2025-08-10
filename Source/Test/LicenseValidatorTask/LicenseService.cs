@@ -32,14 +32,14 @@ namespace LicenseValidatorTask
         }
 
 
-        public LicenseOption TryActive(string module, string lic, out string error)
-        {
-            LicenseOption result = this.IsVail(module, lic, out error);
-            if (result == null)
-                return null;
-            this.OnActiveLic(module, lic);
-            return result;
-        }
+        //public LicenseOption TryActive(string module, string lic, out string error)
+        //{
+        //    LicenseOption result = this.IsVail(module, lic, out error);
+        //    if (result == null)
+        //        return null;
+        //    this.OnActiveLic(module, lic);
+        //    return result;
+        //}
 
         protected virtual void OnActiveLic(string module, string lic)
         {
@@ -52,50 +52,50 @@ namespace LicenseValidatorTask
             File.WriteAllText(file, lic);
         }
 
-        /// <summary>
-        /// 检查本地许可是否合法
-        /// </summary>
-        /// <param name="error"></param>
-        /// <returns></returns>
-        public virtual LicenseOption IsVail(out string error)
-        {
-            string module = Assembly.GetEntryAssembly().GetName().Name;
-            return this.IsVail(module, out error);
-        }
+        ///// <summary>
+        ///// 检查本地许可是否合法
+        ///// </summary>
+        ///// <param name="error"></param>
+        ///// <returns></returns>
+        //public virtual LicenseOption IsVail(out string error)
+        //{
+        //    string module = Assembly.GetEntryAssembly().GetName().Name;
+        //    return this.IsVail(module, out error);
+        //}
 
-        /// <summary>
-        /// 检查本地许可是否合法
-        /// </summary>
-        /// <param name="error"></param>
-        /// <returns></returns>
-        public LicenseOption IsVail(string module, out string error)
-        {
-            module = module ?? Assembly.GetEntryAssembly().GetName().Name;
-            string file = this.GetLicFile(module);
-            if (!File.Exists(file))
-            {
-                error = "许可文件不存在";
-                if (this.UseTrial)
-                {
-                    if (this.TrialEndTime.Date < DateTime.Now.Date)
-                    {
-                        error = "试用许可已到期，请申请正式许可";
-                        return null;
-                    }
-                    LicenseOption licenseOption = new LicenseOption();
-                    licenseOption.EndTime = this.TrialEndTime;
-                    licenseOption.HostID = this.GetHostID();
-                    licenseOption.Module = module;
-                    licenseOption.Level = -1;
-                    this.OnTrial();
-                    return licenseOption;
-                }
+        ///// <summary>
+        ///// 检查本地许可是否合法
+        ///// </summary>
+        ///// <param name="error"></param>
+        ///// <returns></returns>
+        //public LicenseOption IsVail(string module, out string error)
+        //{
+        //    module = module ?? Assembly.GetEntryAssembly().GetName().Name;
+        //    string file = this.GetLicFile(module);
+        //    if (!File.Exists(file))
+        //    {
+        //        error = "许可文件不存在";
+        //        if (this.UseTrial)
+        //        {
+        //            if (this.TrialEndTime.Date < DateTime.Now.Date)
+        //            {
+        //                error = "试用许可已到期，请申请正式许可";
+        //                return null;
+        //            }
+        //            LicenseOption licenseOption = new LicenseOption();
+        //            licenseOption.EndTime = this.TrialEndTime;
+        //            licenseOption.HostID = this.GetHostID();
+        //            licenseOption.Module = module;
+        //            licenseOption.Level = -1;
+        //            this.OnTrial();
+        //            return licenseOption;
+        //        }
 
-                return null;
-            }
-            string lic = File.ReadAllText(file);
-            return this.IsVail(module, lic, out error);
-        }
+        //        return null;
+        //    }
+        //    string lic = File.ReadAllText(file);
+        //    return this.IsVail(module, lic, out error);
+        //}
 
         protected virtual void OnTrial()
         {
@@ -108,9 +108,9 @@ namespace LicenseValidatorTask
         /// <param name="lic"></param>
         /// <param name="error"></param>
         /// <returns></returns>
-        private LicenseOption IsVail(string module, string lic, out string error)
+        public LicenseOption IsVail(string publicKey, string module, string lic, out string error)
         {
-            string value = RSAHelper.DecryptString(lic, this.GetPublicKey());
+            string value = RSAHelper.DecryptString(lic, publicKey);
             LicenseOption licenseOption = new LicenseOption();
             licenseOption.HostID = this.GetHostID();
             licenseOption.Module = module;
@@ -129,16 +129,15 @@ namespace LicenseValidatorTask
             return Path.Combine(path, module, "license.lic");
         }
 
-        private string GetPublicKey()
-        {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "default.pub");
-            return File.ReadAllText(path);
-        }
+        //private string GetPublicKey(string filePath)
+        //{
+        //    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "default.pub");
+        //    return File.ReadAllText(path);
+        //}
 
         public string GetHostID()
         {
-            SystemInfo systemInfo = new SystemInfo();
-            return systemInfo.HostID;
+            return SystemInfo.Instance.HostID;
         }
     }
 

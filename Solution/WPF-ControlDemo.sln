@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.GraphLayout", "..\So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.DrawingContextAnimation", "..\Source\Test\H.Test.DrawingContextAnimation\H.Test.DrawingContextAnimation.csproj", "{4795CAAE-A708-4F46-9366-CA5E10A31E4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Test.Lic", "..\Source\Test\H.Test.Lic\H.Test.Lic.csproj", "{94663129-BC34-4D3A-96A8-7D427ACDFA93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Test.Lic", "..\Source\Test\H.Test.Lic\H.Test.Lic.csproj", "{94663129-BC34-4D3A-96A8-7D427ACDFA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseValidatorTask", "..\Source\Test\LicenseValidatorTask\LicenseValidatorTask.csproj", "{C48553DF-5638-483B-9B51-1B7A3747C2E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LicenseValidatorTask", "..\Source\Test\LicenseValidatorTask\LicenseValidatorTask.csproj", "{C48553DF-5638-483B-9B51-1B7A3747C2E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{93B57BFF-38B5-4D8D-9D0D-8E21955D3D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{C48553DF-5638-483B-9B51-1B7A3747C2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C48553DF-5638-483B-9B51-1B7A3747C2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C48553DF-5638-483B-9B51-1B7A3747C2E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93B57BFF-38B5-4D8D-9D0D-8E21955D3D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93B57BFF-38B5-4D8D-9D0D-8E21955D3D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93B57BFF-38B5-4D8D-9D0D-8E21955D3D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93B57BFF-38B5-4D8D-9D0D-8E21955D3D19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

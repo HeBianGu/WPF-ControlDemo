@@ -10,9 +10,7 @@
 
 
   <!-- 引用自定义任务 -->
-  <UsingTask
-    TaskName="LicenseValidatorTask"
-    AssemblyFile="H:\Github\WPF-ControlDemo\Source\Test\LicenseValidatorTask\bin\Debug\netstandard2.0\LicenseValidatorTask.dll" />
+  <UsingTask TaskName="LicenseValidatorTask" AssemblyFile="H:\Github\WPF-ControlDemo\Source\Test\LicenseValidatorTask\bin\Debug\netstandard2.0\LicenseValidatorTask.dll" />
 
   <!--<Target Name="LicenseValidatorTask" BeforeTargets="CoreCompile">
     <LicenseValidatorTask>
@@ -44,12 +42,19 @@
     <!--<Copy SourceFiles="@(TaskDependencies)"
           DestinationFolder="$(OutputPath)"
           SkipUnchangedFiles="true" />-->
-    <LicenseValidatorTask ModuleName="VisionMaster"/>
+    <LicenseValidatorTask ModuleName="VisionMaster" PublicKeyFilePath="$(MSBuildThisFileDirectory)default.pub" LicenseFilePath="$(MSBuildThisFileDirectory)license.lic" />
      <!--执行任务--><!-- 
     <LicenseValidatorTask
       LicenseFilePath="license.txt"
       PublicKeyFilePath="public_key.pem" />-->
   </Target>
+
+
+  <ItemGroup>
+    <None Update="default.pub">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   
   <!--在构建前验证许可证-->
 

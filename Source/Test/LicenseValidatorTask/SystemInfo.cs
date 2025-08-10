@@ -8,9 +8,9 @@ using System.Text;
 
 namespace LicenseValidatorTask
 {
-    internal class SystemInfo
+    public class SystemInfo
     {
-        //public static SystemInfo Instance = new SystemInfo();
+        public static SystemInfo Instance = new SystemInfo();
 
         internal SystemInfo()
         {
