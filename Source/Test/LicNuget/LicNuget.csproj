@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <!--<UsingTask TaskName="LicenseValidatorTask" AssemblyFile="$(MSBuildThisFileDirectory)tasks\netstandard2.0\LicenseValidatorTask.dll" />-->
+
+  <UsingTask TaskName="LicenseValidatorTask"
+             AssemblyFile="$(NuGetPackageRoot)LicenseValidatorTask\1.0.1\build\LicenseValidatorTask.dll" />
+  <Target Name="ValidateLicense" BeforeTargets="CoreCompile">
+    <LicenseValidatorTask ModuleName="VisionMaster" BasePath="$(OutDir)" />
+  </Target>
+  <ItemGroup>
+    <PackageReference Include="LicenseValidatorTask" Version="1.0.1" />
+  </ItemGroup>
+</Project>

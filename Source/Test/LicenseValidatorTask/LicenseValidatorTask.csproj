@@ -12,6 +12,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <!-- 强制复制所有依赖项 -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,5 +24,10 @@
     <PackageReference Include="System.Management" Version="9.0.8" />
     <!-- 显式引用基础组件 -->
     <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <!-- 将任务DLL放入build目录 -->
+  <ItemGroup>
+    <None Include="bin\$(Configuration)\netstandard2.0\LicenseValidatorTask.dll" Pack="true" PackagePath="build\" />
   </ItemGroup>
 </Project>
