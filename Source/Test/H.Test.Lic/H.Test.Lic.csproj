@@ -42,19 +42,12 @@
     <!--<Copy SourceFiles="@(TaskDependencies)"
           DestinationFolder="$(OutputPath)"
           SkipUnchangedFiles="true" />-->
-    <LicenseValidatorTask ModuleName="VisionMaster" PublicKeyFilePath="$(MSBuildThisFileDirectory)default.pub" LicenseFilePath="$(MSBuildThisFileDirectory)license.lic" />
+    <LicenseValidatorTask ModuleName="VisionMaster" BasePath="$(OutDir)" />
      <!--执行任务--><!-- 
     <LicenseValidatorTask
       LicenseFilePath="license.txt"
       PublicKeyFilePath="public_key.pem" />-->
   </Target>
-
-
-  <ItemGroup>
-    <None Update="default.pub">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
   
   <!--在构建前验证许可证-->
 
