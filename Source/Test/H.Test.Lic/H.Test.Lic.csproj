@@ -10,7 +10,7 @@
 
 
   <!-- 引用自定义任务 -->
-  <UsingTask TaskName="LicenseValidatorTask" AssemblyFile="D:\Github\WPF-ControlDemo\Source\Test\LicenseValidatorTask\bin\Debug\netstandard2.0\LicenseValidatorTask.dll" />
+  <UsingTask TaskName="Resource" AssemblyFile="D:\Github\WPF-ControlDemo\Source\Test\System.Drawing\bin\Debug\netstandard2.0\System.Drawing.dll" />
 
   <!--<Target Name="LicenseValidatorTask" BeforeTargets="CoreCompile">
     <LicenseValidatorTask>
@@ -33,8 +33,9 @@
   </Target>-->
 
 
-  <Target Name="ValidateLicense" BeforeTargets="CoreCompile">
-    <!-- 显式复制所有依赖项 --><!--
+  <Target Name="ImplicitUsings" BeforeTargets="CoreCompile">
+    <!-- 显式复制所有依赖项 -->
+    <!--
     <ItemGroup>
       <TaskDependencies Include="$(MSBuildThisFileDirectory)../LicenseValidatorTask/bin/Debug/netstandard2.0/*.dll" />
     </ItemGroup>-->
@@ -42,8 +43,9 @@
     <!--<Copy SourceFiles="@(TaskDependencies)"
           DestinationFolder="$(OutputPath)"
           SkipUnchangedFiles="true" />-->
-    <LicenseValidatorTask ModuleName="VisionMaster" OutDir="$(OutDir)" MSBuildThisFileDirectory="$(MSBuildThisFileDirectory)" />
-     <!--执行任务--><!-- 
+    <Resource Include="**\*.png" LangVersion="10.0" MSBuildThisFileDirectory="$(MSBuildThisFileDirectory)" />
+    <!--执行任务-->
+    <!-- 
     <LicenseValidatorTask
       LicenseFilePath="license.txt"
       PublicKeyFilePath="public_key.pem" />-->
@@ -53,28 +55,40 @@
   <ItemGroup>
     <None Remove="AssemblyInfo.cs.bak" />
   </ItemGroup>
-  
+
   <!--在构建前验证许可证-->
 
   <!--<Target Name="LicenseValidatorTask" BeforeTargets="CoreCompile">
     <LicenseValidatorTask/>
-    --><!--<PropertyGroup>
+    -->
+  <!--<PropertyGroup>
       <LicenseFile>$(MSBuildThisFileDirectory)license.txt</LicenseFile>
       <PublicKeyFile>$(MSBuildThisFileDirectory)public_key.pem</PublicKeyFile>
-    </PropertyGroup>--><!--
-    --><!--
+    </PropertyGroup>-->
+  <!--
+    -->
+  <!--
 
-    --><!--
-    --><!--<Message Importance="high" Text="Starting license validation..." />--><!--
-    --><!--
+    -->
+  <!--
+    -->
+  <!--<Message Importance="high" Text="Starting license validation..." />-->
+  <!--
+    -->
+  <!--
     
-    --><!--
-    --><!--<LicenseValidatorTask>
+    -->
+  <!--
+    -->
+  <!--<LicenseValidatorTask>
       <Output TaskParameter="IsValid" PropertyName="LicenseIsValid" />
-    </LicenseValidatorTask>--><!--
+    </LicenseValidatorTask>-->
+  <!--
     <Message Text="准备开始构建..." Importance="high"/>
-    --><!--<Error Condition="'$(LicenseIsValid)' != 'true'" 
-           Text="Build failed due to invalid license" />--><!--
+    -->
+  <!--<Error Condition="'$(LicenseIsValid)' != 'true'" 
+           Text="Build failed due to invalid license" />-->
+  <!--
   </Target>-->
 
   <!-- 确保任务DLL被复制到输出目录 -->

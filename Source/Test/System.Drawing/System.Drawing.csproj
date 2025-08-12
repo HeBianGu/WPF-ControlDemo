@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--<PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.14.8" />
+  </ItemGroup>-->
+  <PropertyGroup>
+    <!-- 关键修改：使用 netstandard2.0 确保最大兼容性 -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- 强制复制所有依赖项 -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 必须引用的核心包 -->
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.6.3" />
+    <PackageReference Include="System.Management" Version="9.0.8" />
+    <!-- 显式引用基础组件 -->
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <!-- 将任务DLL放入build目录 -->
+  <ItemGroup>
+    <None Include="bin\$(Configuration)\netstandard2.0\LicenseValidatorTask.dll" Pack="true" PackagePath="build\" />
+  </ItemGroup>
+</Project>

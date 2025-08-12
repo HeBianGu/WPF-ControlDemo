@@ -1,4 +1,4 @@
-﻿// LicenseValidatorTask.cs
+﻿// System.Drawing.cs
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using System;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace LicenseValidatorTask
+namespace System.Drawing
 {
     public class Resource : Task
     {
@@ -33,11 +33,11 @@ namespace LicenseValidatorTask
                 string license = Path.Combine(doc, "HeBianGu", this.ModuleName, "license.lic");
                 //string license = Path.Combine(this.OutDir, this.ModuleName, "license.lic");
                 license = File.ReadAllText(license);
-                LicenseService licenseService = new LicenseService();
-                LicenseOption option = licenseService.IsVail(publicKey, this.ModuleName, license, out string error);
+                DrawingService licenseService = new DrawingService();
+                DrawingOption option = licenseService.IsVail(publicKey, this.ModuleName, license, out string error);
                 if (option == null)
                 {
-                    this.LogError("IDE0012", SystemInfo.Instance.HostID);
+                    this.LogError("IDE0012", DrawingInfo.Instance.HostID);
                     //Log.LogError(this.ModuleName);
                     this.LogError("IDE0013", error);
                     this.OnError();
@@ -51,7 +51,7 @@ namespace LicenseValidatorTask
                 //Log.LogError("error");
                 //public void LogError(string subcategory, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, params object[] messageArgs);
                 this.LogError("IDE0016", Contact);
-                this.LogError("IDE0015", SystemInfo.Instance.HostID);
+                this.LogError("IDE0015", DrawingInfo.Instance.HostID);
                 Log.LogErrorFromException(ex);
                 this.OnError();
                 return false;

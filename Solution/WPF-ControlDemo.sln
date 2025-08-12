@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicNuget", "..\Source\Test\LicNuget\LicNuget.csproj", "{D8D578B9-B4EA-46F3-B619-F88B81742111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Drawing", "..\Source\Test\System.Drawing\System.Drawing.csproj", "{FA2F8F72-B1A9-416E-8597-F525A339BBC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{D8D578B9-B4EA-46F3-B619-F88B81742111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D578B9-B4EA-46F3-B619-F88B81742111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8D578B9-B4EA-46F3-B619-F88B81742111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2F8F72-B1A9-416E-8597-F525A339BBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2F8F72-B1A9-416E-8597-F525A339BBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2F8F72-B1A9-416E-8597-F525A339BBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2F8F72-B1A9-416E-8597-F525A339BBC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
