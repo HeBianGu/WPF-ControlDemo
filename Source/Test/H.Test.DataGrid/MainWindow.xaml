@@ -1,0 +1,105 @@
+﻿<Window
+    x:Class="H.Test.DataGrid.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:H.Test.DataGrid"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <local:MyDataGrid FrozenColumnCount="2" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:MainWindow}, Path=Students}">
+            <!--<DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                </Style>
+            </DataGrid.RowStyle>-->
+            <!--<local:MyDataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                </Style>
+            </local:MyDataGrid.ColumnHeaderStyle>
+            <local:MyDataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="FlowDirection" Value="LeftToRight" />
+                </Style>
+            </local:MyDataGrid.CellStyle>-->
+            <local:MyDataGrid.Columns>
+                <DataGridTemplateColumn DisplayIndex="4" Header="操作">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <Button Content="编辑" />
+                                <Button Content="修改" />
+                                <Button Content="删除" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Name}"
+                    Header="Name" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Age}"
+                    Header="Age" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Email}"
+                    Header="Email" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Name}"
+                    Header="Name" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Age}"
+                    Header="Age" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding Email}"
+                    Header="Email" />
+
+            </local:MyDataGrid.Columns>
+            <!--<local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="11"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="11"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />
+            <local:Student
+                Name="HeBianGu"
+                Age="12"
+                Email="908293466@qq.com" />-->
+        </local:MyDataGrid>
+    </Grid>
+</Window>
